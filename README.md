@@ -56,15 +56,34 @@ The Admin → Evaluation page scores the hybrid against colour-only and vision-o
 | `layout.html`, `styles_base.css`, `styles_v4.css` | Page structure and styling. |
 | `build.py` | Combines the `src/` files into the single `index.html`. |
 
+## Configuration (environment variables)
+
+The Supabase keys are **not** stored in the code. They are injected at build time from two environment variables:
+
+| Variable | Value |
+|---|---|
+| `SUPABASE_URL` | your Supabase project URL, e.g. `https://xxxx.supabase.co` |
+| `SUPABASE_ANON_KEY` | your Supabase **anon / public** key |
+
+Both are public client values (safe in the browser); the database's security rules are what protect the data.
+
+The build step (`build-config.js`) writes these into `public/config.js`, which the app reads as `window.RZ_CONFIG`. If they are missing, the app shows a "not configured" screen instead of breaking.
+
+## Deploy on Vercel
+
+1. In Vercel, **Add New → Project → Import** this repo.
+2. Vercel reads `vercel.json` automatically (build command `node build-config.js`, output `public/`). Leave the defaults.
+3. **Settings → Environment Variables** → add `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
+4. **Deploy.** Then set your Vercel URL as the **Site URL** in Supabase → Authentication → URL Configuration.
+
 ## Run it locally
 
-Open `index.html` in a browser. It connects to the hosted Supabase backend. To rebuild from source after editing `src/`:
+- Copy `.env.example` to `.env` and fill in your two values.
+- `npm run build` → open `public/index.html`.
 
-```
-python3 src/build.py
-```
+(The raw `src/` files are the readable source; `src/build.py` reassembles them into the top-level `index.html`.)
 
 ## Notes
 
-- The Supabase anon key in `index.html` is a public key by design; the database's security rules are what protect the data.
+- `SUPABASE_ANON_KEY` is a public key by design; it is safe to expose in the browser. Never put the Supabase **service_role** key here.
 - The CLIP vision model (~90 MB) downloads once into the browser on first use and is cached.

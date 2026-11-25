@@ -1,5 +1,7 @@
 {
   "framework": null,
+  "buildCommand": "node build-config.js",
+  "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false
 }

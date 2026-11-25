@@ -7,7 +7,7 @@ head = '''<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>\n<script src="config.js"></script>
 <script>try{var t=localStorage.getItem("rz_theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
 <style>
 /* RANGREZA v4 — three portals (Shop, Vendor, Admin), Supabase-backed, CLIP-assisted matching.

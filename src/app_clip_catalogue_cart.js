@@ -3,8 +3,9 @@
    The anon key is MEANT to be public; Row Level Security in schema_v4.sql is
    what protects the data. Never paste the service_role key here.
    ========================================================================== */
-var SUPABASE_URL = 'PASTE_YOUR_SUPABASE_URL_HERE';
-var SUPABASE_ANON_KEY = 'PASTE_YOUR_SUPABASE_ANON_KEY_HERE';
+var RZ_CFG = (typeof window !== 'undefined' && window.RZ_CONFIG) || {};
+var SUPABASE_URL = RZ_CFG.SUPABASE_URL || 'PASTE_YOUR_SUPABASE_URL_HERE';
+var SUPABASE_ANON_KEY = RZ_CFG.SUPABASE_ANON_KEY || 'PASTE_YOUR_SUPABASE_ANON_KEY_HERE';
 var CLIP_MODEL = 'Xenova/clip-vit-base-patch32';
 var TRANSFORMERS_URLS = [
   'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1/+esm',
